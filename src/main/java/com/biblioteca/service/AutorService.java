@@ -26,9 +26,9 @@ public class AutorService {
     }
 
     public Autor buscarPorId(Long id){
-        Autor buscarAutor = autorRepository.findById(id)
+        return autorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Autor não encontrado com o ID informado!"));
-        return buscarAutor;
+
     }
 
     public Autor atualizar(Long id, Autor autorAtualizado){
@@ -48,7 +48,6 @@ public class AutorService {
     public void excluir(Long id){
         Autor autor = autorRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Autor não encontrado!"));
         autorRepository.delete(autor);
-
     }
 
 }
