@@ -25,11 +25,18 @@ public class AutorService {
         return autorRepository.findAll();
     }
 
+    public List<Autor> listarPorNome(String nome){
+        return autorRepository.findByNomeContaining(nome);
+
+    }
+
     public Autor buscarPorId(Long id){
         return autorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Autor não encontrado com o ID informado!"));
 
     }
+
+
 
     public Autor atualizar(Long id, Autor autorAtualizado){
         return autorRepository.findById(id).map(autor ->{

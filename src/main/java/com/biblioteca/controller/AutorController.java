@@ -25,6 +25,11 @@ public class AutorController {
         return autorService.listarTodos();
     }
 
+    @GetMapping("/porNome")
+    public List<Autor> buscarPorNome(@RequestParam(name = "nome") String nome){
+        return autorService.listarPorNome(nome);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Autor> buscarPorId(@PathVariable Long id){
        Autor autor = autorService.buscarPorId(id);
